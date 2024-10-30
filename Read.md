@@ -1,2 +1,0 @@
-#auntk udacity 
-#init project

@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: 754809338935
+    AWS_REGION: us-west-1
+    ECR_REPO: auntk-proj3-repo
+
+phases:
+  pre_build:
+    commands:
+      - echo "Logging in to Amazon ECR..."
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+  build:
+    commands:
+      - echo "Building Docker image..."
+      - docker build -t $ECR_REPO .
+      - docker tag $ECR_REPO:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$CODEBUILD_BUILD_NUMBER
+  post_build:
+    commands:
+      - echo "Pushing Docker image to ECR..."
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$CODEBUILD_BUILD_NUMBER
+artifacts:
+  files:
+    - '**/*'
