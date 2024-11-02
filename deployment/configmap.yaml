@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: auntk-config
+  name: db-config
 data:
-  DB_NAME: auntk_prj3_db
-  DB_USER: auntk
-  DB_HOST: auntk-postgres
+  DB_NAME: mydatabase
+  DB_USER: myuser
+  DB_HOST: postgresql-service
   DB_PORT: "5432"

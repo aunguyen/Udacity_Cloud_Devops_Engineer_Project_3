@@ -4,11 +4,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 # Environment variables for database connection
-db_username = os.getenv("DB_USER", "auntk")
-db_password = os.getenv("DB_PASSWORD", "auntkP@ssword")
-db_host = os.getenv("DB_HOST", "auntk-postgres")
+db_username = os.getenv("DB_USER", "myuser")
+db_password = os.getenv("DB_PASSWORD", "mypassword")
+db_host = os.getenv("DB_HOST", "localhost")
 db_port = os.getenv("DB_PORT", "5432")
-db_name = os.getenv("DB_NAME", "auntk_prj3_db")
+db_name = os.getenv("DB_NAME", "mydatabase")
 
 # Flask and SQLAlchemy setup
 app = Flask(__name__)
