@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 754809338935.dkr.ecr.us-west-1.amazonaws.com/auntk-proj3-repo:5
+        image: 754809338935.dkr.ecr.us-west-1.amazonaws.com/auntk-proj3-repo:2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -46,7 +46,7 @@ spec:
           timeoutSeconds: 5
         envFrom:
         - configMapRef:
-            name: auntk-config
+            name: db-config
         env:
         - name: DB_PASSWORD
           valueFrom:
